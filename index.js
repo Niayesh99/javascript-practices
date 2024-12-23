@@ -20,13 +20,12 @@ console.log(`Result of addition is :${additionResult}`);
 console.log(`Result of subtract is :${subtractionResult}`);
 console.log(`Result of multiply is :${multiplicationResult}`);
 console.log(`Result of divide is :${divisionResult}`);
-// @ts-ignore
+
 const firstNumber = document.getElementById("Number1");
 const secondNumber = document.getElementById("Number2");
 const addButton = document.getElementById("add-button");
 const resultElement = document.getElementById("result");
 addButton.addEventListener("click", () => {
-  // Get the updated value of the input when the button is clicked
   console.log("Button clicked! Input value:", firstNumber.value);
   console.log("Button clicked! Input value:", secondNumber.value);
   const result = add(Number(firstNumber.value), Number(secondNumber.value));
@@ -35,7 +34,6 @@ addButton.addEventListener("click", () => {
 });
 const subtractButton = document.getElementById("subtract-button");
 subtractButton.addEventListener("click", () => {
-  // Get the updated value of the input when the button is clicked
   console.log("Button clicked! Input value:", firstNumber.value);
   console.log("Button clicked! Input value:", secondNumber.value);
   const result = subtract(
@@ -47,7 +45,6 @@ subtractButton.addEventListener("click", () => {
 });
 const multiplyButton = document.getElementById("multiply-button");
 multiplyButton.addEventListener("click", () => {
-  // Get the updated value of the input when the button is clicked
   console.log("Button clicked! Input value:", firstNumber.value);
   console.log("Button clicked! Input value:", secondNumber.value);
   const result = multiply(
@@ -59,12 +56,22 @@ multiplyButton.addEventListener("click", () => {
 });
 const divideButton = document.getElementById("divide-button");
 divideButton.addEventListener("click", () => {
-  // Get the updated value of the input when the button is clicked
-  console.log("Button clicked! Input value:", firstNumber.value);
-  console.log("Button clicked! Input value:", secondNumber.value);
-  const result = divide(Number(firstNumber.value), Number(secondNumber.value));
-  console.log(`Divide result is : ${result}`);
-  resultElement.innerHTML = "Result : " + result;
+  if (Number(secondNumber.value) === 0) {
+    const alertContainer = document.getElementById("alert-container");
+    alertContainer.innerHTML = `<div id="error-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+      Can't divide by zero!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+  } else {
+    console.log("Button clicked! Input value:", firstNumber.value);
+    console.log("Button clicked! Input value:", secondNumber.value);
+    const result = divide(
+      Number(firstNumber.value),
+      Number(secondNumber.value)
+    );
+    console.log(`Divide result is : ${result}`);
+    resultElement.innerHTML = "Result : " + result;
+  }
   /*const alertElement = document.getElementById("error-alert");
   if (alertElement) {
     // Remove the "show" class to hide the alert (Bootstrap automatically handles fade-out)
@@ -72,11 +79,4 @@ divideButton.addEventListener("click", () => {
     alertElement.classList.add("fade"); // Ensures proper dismissal animation
   }
   */
-  if (Number(secondNumber.value) === 0) {
-    const alertContainer = document.getElementById("alert-container");
-    alertContainer.innerHTML = `<div id="error-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
-      Can't divide by zero!
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>`;
-  }
 });
