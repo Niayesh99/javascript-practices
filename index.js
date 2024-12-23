@@ -65,4 +65,18 @@ divideButton.addEventListener("click", () => {
   const result = divide(Number(firstNumber.value), Number(secondNumber.value));
   console.log(`Divide result is : ${result}`);
   resultElement.innerHTML = "Result : " + result;
+  /*const alertElement = document.getElementById("error-alert");
+  if (alertElement) {
+    // Remove the "show" class to hide the alert (Bootstrap automatically handles fade-out)
+    alertElement.classList.remove("show");
+    alertElement.classList.add("fade"); // Ensures proper dismissal animation
+  }
+  */
+  if (Number(secondNumber.value) === 0) {
+    const alertContainer = document.getElementById("alert-container");
+    alertContainer.innerHTML = `<div id="error-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+      Can't divide by zero!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+  }
 });
