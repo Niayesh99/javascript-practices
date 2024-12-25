@@ -12,6 +12,34 @@ function multiply(a, b) {
 function divide(a, b) {
   return a / b;
 }
+
+function gcd(number1, number2) {
+  let divisorsNum1 = [];
+  let divisorsNum2 = [];
+  let commonDivisors = [];
+  for (let index = 1; index < number1; index++) {
+    const remainder = number1 % index;
+    if (remainder === 0) {
+      divisorsNum1.push(index);
+    }
+  }
+  for (let index = 1; index < number2; index++) {
+    const remainder = number2 % index;
+    if (remainder === 0) {
+      divisorsNum2.push(index);
+    }
+  }
+  commonDivisors = divisorsNum1.filter((num) => divisorsNum2.includes(num));
+  console.log(commonDivisors);
+  let max = 0;
+  for (let index = 0; index < commonDivisors.length; index++) {
+    if (commonDivisors[index] > max) {
+      max = commonDivisors[index];
+    }
+  }
+  console.log(max);
+}
+
 const additionResult = add(2, 4);
 const subtractionResult = subtract(2, 4);
 const multiplicationResult = multiply(2, 4);
