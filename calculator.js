@@ -37,9 +37,17 @@ function gcd(number1, number2) {
       max = commonDivisors[index];
     }
   }
-  console.log(max);
+  console.log(`GCD answer is : ${max}`);
+  return max;
 }
 
+function lcm(num1, num2) {
+  let numsGcd = gcd(num1, num2);
+  let mult = Math.abs(num1 * num2);
+  let answer = divide(mult, numsGcd);
+  console.log(`LCM answer is : ${answer}`);
+}
+lcm(30, 42);
 const additionResult = add(2, 4);
 const subtractionResult = subtract(2, 4);
 const multiplicationResult = multiply(2, 4);
